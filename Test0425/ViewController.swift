@@ -18,11 +18,11 @@ class ViewController: UIViewController {
     @IBAction func Switch1_toggle(_ sender: UISwitch) {
         if( Switch1.isOn ){
             print("Switch1 turned On")
-            HubManager.alert_hub(SwiftView: self, No: 1)
+            //HubManager.alert_hub(SwiftView: self,Swift No: 1)
+            HubManager.alert_hub(SwiftView: self, SwiftSwitch: Switch1, No: 1)
             //alert_hub(No: 1)
             connection.No=1
             HubManager.centralManager.scanForPeripherals(withServices: [legohubServiceCBUUID])
-            //BLE.centralManager.scanForPeripherals(withServices: [legohubServiceCBUUID])
         }else{
             print("Switch1 turned Off")
             if(connection.Status[1]==1){

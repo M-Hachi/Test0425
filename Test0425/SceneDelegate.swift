@@ -2,10 +2,6 @@
 //  SceneDelegate.swift
 //  Test0425
 //
-//  Created by 森内　映人 on 2020/04/25.
-//  Copyright © 2020 森内　映人. All rights reserved.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

@@ -41,7 +41,6 @@ class ViewController: UIViewController{
     @IBOutlet var TableView: UITableView!
     
     let switchview = [UISwitch](repeating: UISwitch(frame: CGRect()), count: 10)
-    //let fruits = ["apple", "orange", "melon", "banana", "pineapple","5"]
     let Hubs = ["Uno", "Dos", "Tres", "Cuatro", "Cinco","Seis","Siete"]
     
     @IBOutlet weak var Switch0: UISwitch!

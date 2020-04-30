@@ -37,21 +37,22 @@ class CustomSwitch: UISwitch{
 
 class ViewController: UIViewController{
     //UITableViewDelegate, UITableViewDataSource
-    
     @IBOutlet var TableView: UITableView!
-    
-    let switchview = [UISwitch](repeating: UISwitch(frame: CGRect()), count: 10)
-    let Hubs = ["Uno", "Dos", "Tres", "Cuatro", "Cinco","Seis","Siete"]
     
     @IBOutlet weak var Switch0: UISwitch!
     @IBOutlet weak var Switch1: UISwitch!
+    
+    let Hubs = ["Uno", "Dos", "Tres", "Cuatro", "Cinco","Seis","Siete"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         blemanager = .init()
+        
         //TableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell0")
 //        TableView.delegate = self
 //        TableView.dataSource = self
+        
         self.Switch0.addTarget(self, action: #selector(Switch0_toggle), for: .valueChanged)
         self.Switch1.addTarget(self, action: #selector(Switch1_toggle), for: .valueChanged)
         

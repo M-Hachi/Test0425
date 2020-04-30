@@ -95,7 +95,7 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource{
             blemanager.Toggle_Off(SwiftView: self, SwiftSwitch: Switch2, HubId: 2)
         }
     }*/
-    
+    //tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("number of rows: \(Hubs.count)")
         return Hubs.count

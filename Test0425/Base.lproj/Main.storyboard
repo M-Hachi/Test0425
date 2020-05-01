@@ -126,7 +126,7 @@
                     <connections>
                         <outlet property="Switch0" destination="Pda-6t-lm4" id="h29-pA-Zd7"/>
                         <outlet property="Switch1" destination="RL8-Xx-ouw" id="FfJ-rH-Ynq"/>
-                        <outlet property="TableView" destination="rRl-fh-3HQ" id="hkO-uX-3pk"/>
+                        <outlet property="TableView" destination="rRl-fh-3HQ" id="fX9-rR-ZHv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -136,7 +136,6 @@
         <!--View Controller2-->
         <scene sceneID="OgR-Qi-vPR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B7q-Qb-iZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="xfy-g0-RFf" customClass="ViewController_2" customModule="Test0425" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wru-bZ-PRj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -195,6 +194,7 @@
                         <outlet property="Button_1" destination="NlH-eV-9II" id="MY0-EV-2o0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7q-Qb-iZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1812" y="138.98050974512745"/>
         </scene>

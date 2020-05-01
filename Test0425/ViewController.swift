@@ -16,17 +16,19 @@ class CustomSwitch: UISwitch{
     //@IBOutlet weak var mySwitch: UISwitch!
     @objc func toggle(_ sender: UISwitch) {
         if sender.isOn{
-            print("on \(self.index)")
-            status[self.index]=true
+            print("on \(self.tag)")
+            status[self.tag]=true
         } else {
-            print("off \(self.index)")
-            status[self.index]=false
+            print("off \(self.tag)")
+            status[self.tag]=false
         }
     }
     init(){
         self.index=99
         super.init(frame: CGRect())
         self.addTarget(self, action: #selector(toggle), for: .valueChanged)
+        print("switch \(self.tag) to \(status[self.tag])")
+        self.setOn(status[self.tag], animated: false)
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +39,10 @@ class CustomSwitch: UISwitch{
 
 class ViewController: UIViewController{
     //UITableViewDelegate, UITableViewDataSource
-    @IBOutlet var TableView: UITableView!
+    //@IBOutlet var TableView: CustomViewTable!
+    
+    @IBOutlet weak var TableView: UITableView!
+    //@IBOutlet var TableView: UITableView!
     
     @IBOutlet weak var Switch0: UISwitch!
     @IBOutlet weak var Switch1: UISwitch!
@@ -48,7 +53,6 @@ class ViewController: UIViewController{
         // Do any additional setup after loading the view.
         
         blemanager = .init()
-        
         //TableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell0")
 //        TableView.delegate = self
 //        TableView.dataSource = self
@@ -66,8 +70,7 @@ class ViewController: UIViewController{
     }
 }
 
-
-
+//extension ViewController{
 extension ViewController :UITableViewDelegate, UITableViewDataSource{
     @objc func Switch0_toggle(_ sender: UISwitch) {
         if( Switch0.isOn ){
@@ -96,6 +99,7 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource{
             blemanager.Toggle_Off(SwiftView: self, SwiftSwitch: Switch2, HubId: 2)
         }
     }*/
+    
     //tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("number of rows: \(Hubs.count)")
@@ -111,11 +115,15 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print("will display cell \(indexPath.row)")
         
-        let switchview:UISwitch = UISwitch(frame: CGRect())
+        let switchview:UISwitch = CustomSwitch()
+        
+        /*let switchview:UISwitch = UISwitch(frame: CGRect())
         cell.accessoryView = switchview
-        switchview.addTarget(self, action: #selector(toggle), for: .valueChanged)
+        switchview.addTarget(self, action: #selector(toggle), for: .valueChanged)*/
         switchview.tag = indexPath.row
-        switchview.setOn(status[switchview.tag], animated: false)
+
+        cell.accessoryView = switchview
+        //switchview.setOn(status[switchview.tag], animated: false)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

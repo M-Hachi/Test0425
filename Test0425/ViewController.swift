@@ -11,36 +11,11 @@ import CoreBluetooth
 public var blemanager = BLEManager()
 var status=[Bool](repeating: false, count: 10)
 
-class CustomSwitch: UISwitch{
-    var index:Int
-    //@IBOutlet weak var mySwitch: UISwitch!
-    @objc func toggle(_ sender: UISwitch) {
-        if sender.isOn{
-            print("on \(self.tag)")
-            status[self.tag]=true
-        } else {
-            print("off \(self.tag)")
-            status[self.tag]=false
-        }
-    }
-    init(){
-        self.index=99
-        super.init(frame: CGRect())
-        self.addTarget(self, action: #selector(toggle), for: .valueChanged)
-        print("switch \(self.tag) to \(status[self.tag])")
-        self.setOn(status[self.tag], animated: false)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
 
 class ViewController: UIViewController{
     //UITableViewDelegate, UITableViewDataSource
-    //@IBOutlet var TableView: CustomViewTable!
-    
+    //@IBOutlet var TableView = HubsTableView()
+    var handler: CustomTable!
     @IBOutlet weak var TableView: UITableView!
     //@IBOutlet var TableView: UITableView!
     
@@ -56,6 +31,9 @@ class ViewController: UIViewController{
         //TableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell0")
 //        TableView.delegate = self
 //        TableView.dataSource = self
+        handler = CustomTable(inputData: Hubs)
+        TableView.dataSource = handler
+        //self.TableView = HubsTableView()
         
         self.Switch0.addTarget(self, action: #selector(Switch0_toggle), for: .valueChanged)
         self.Switch1.addTarget(self, action: #selector(Switch1_toggle), for: .valueChanged)
@@ -70,8 +48,8 @@ class ViewController: UIViewController{
     }
 }
 
-//extension ViewController{
-extension ViewController :UITableViewDelegate, UITableViewDataSource{
+extension ViewController{
+//extension ViewController :UITableViewDelegate, UITableViewDataSource{
     @objc func Switch0_toggle(_ sender: UISwitch) {
         if( Switch0.isOn ){
             print("Switch0 turned On")
@@ -90,41 +68,21 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource{
             blemanager.Toggle_Off(SwiftView: self, SwiftSwitch: Switch1, HubId: 1)
         }
     }
-    /*@objc func Switch2_toggle(_ sender: UISwitch) {
-        if( Switch2.isOn ){
-            print("Switch2 turned On")
-            blemanager.Toggle_On(SwiftView: self, SwiftSwitch: Switch2, HubId: 2)
-        }else{
-            print("Switch2 turned Off")
-            blemanager.Toggle_Off(SwiftView: self, SwiftSwitch: Switch2, HubId: 2)
-        }
-    }*/
-    
     //tableview
+    /*
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("number of rows: \(Hubs.count)")
         return Hubs.count
     }
-    //var cell = [UITableViewCell](repeating: UITableViewCell(), count: 10)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath)
         // セルに表示する値を設定する
         cell.textLabel?.text = Hubs[indexPath.row]
+        
+        cell.accessoryView = CustomSwitch(index: indexPath.row)
         return cell
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("will display cell \(indexPath.row)")
-        
-        let switchview:UISwitch = CustomSwitch()
-        
-        /*let switchview:UISwitch = UISwitch(frame: CGRect())
-        cell.accessoryView = switchview
-        switchview.addTarget(self, action: #selector(toggle), for: .valueChanged)*/
-        switchview.tag = indexPath.row
-
-        cell.accessoryView = switchview
-        //switchview.setOn(status[switchview.tag], animated: false)
-    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
            // アクションを実装
@@ -139,6 +97,6 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource{
             print("off \(sender.tag)")
             status[sender.tag]=false
         }
-    }
+    }*/
 }
 

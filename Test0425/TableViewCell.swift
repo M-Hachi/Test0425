@@ -5,6 +5,54 @@ import Foundation
 import UIKit
 
 
+import UIKit
+
+
+class CustomSwitch: UISwitch{
+    var index:Int
+    //@IBOutlet weak var mySwitch: UISwitch!
+    @objc func toggle(_ sender: UISwitch) {
+        if sender.isOn{
+            print("on \(self.index)")
+            status[self.index]=true
+        } else {
+            print("off \(self.index)")
+            status[self.index]=false
+        }
+    }
+    init(index: Int){
+        self.index=index
+        super.init(frame: CGRect())
+        self.addTarget(self, action: #selector(toggle), for: .valueChanged)
+        print("switch \(self.index) to \(status[self.index])")
+        self.setOn(status[self.index], animated: false)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class CustomTable :NSObject, UITableViewDataSource {
+    var Hubs: [String]
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.Hubs.count
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath)
+
+        //cell.textLabel?.text = "row #\(indexPath.row + 1)"
+        cell.textLabel?.text = Hubs[indexPath.row]
+        cell.accessoryView = CustomSwitch(index: indexPath.row)
+
+        return cell
+    }
+    public init(inputData: [String]) {
+        self.Hubs = inputData
+    }
+}
 
 class TableViewCell: UITableViewCell {
 
@@ -26,8 +74,40 @@ class TableViewCell: UITableViewCell {
 
 }
 
+public class HubsTableView: UITableViewController{
+    let Hubs = ["Uno", "Dos", "Tres", "Cuatro", "Cinco","Seis","Siete"]
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("number of rows")
+        return Hubs.count
+    }
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath)
+        // セルに表示する値を設定する
+        cell.textLabel?.text = Hubs[indexPath.row]
+        
+        let switchview:UISwitch = UISwitch(frame: CGRect())
+        cell.accessoryView = switchview
+        switchview.addTarget(self, action: #selector(toggle), for: .valueChanged)
+        switchview.tag = indexPath.row
+        switchview.setOn(status[switchview.tag], animated: false)
+        
+        return cell
+    }
+    
+    @objc func toggle(_ sender: UISwitch) {
+        if sender.isOn{
+            print("on \(sender.tag)")
+            status[sender.tag]=true
+        } else {
+            print("off \(sender.tag)")
+            status[sender.tag]=false
+        }
+    }
+    
+}
 //class CustomViewTable:UITableView{
-public class CustomViewTable: NSObject {
+/*public class CustomViewTable: NSObject {
     
     let Hubs = ["Uno", "Dos", "Tres", "Cuatro", "Cinco","Seis","Siete"]
 }
@@ -73,5 +153,5 @@ extension CustomViewTable: UITableViewDelegate, UITableViewDataSource {
             status[sender.tag]=false
         }
     }
-}
+}*/
 

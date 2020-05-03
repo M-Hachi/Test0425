@@ -4,24 +4,23 @@
 import Foundation
 import UIKit
 
-
-import UIKit
-
-
 class CustomSwitch: UISwitch{
     var index:Int
-    //@IBOutlet weak var mySwitch: UISwitch!
+    var ViewController: UIViewController
     @objc func toggle(_ sender: UISwitch) {
         if sender.isOn{
             print("on \(self.index)")
             status[self.index]=true
+            blemanager.Toggle_On(SwiftView: self.ViewController, SwiftSwitch: self, HubId: self.index)
         } else {
             print("off \(self.index)")
             status[self.index]=false
+            blemanager.Toggle_Off(SwiftView: self.ViewController, SwiftSwitch: self, HubId: self.index)
         }
     }
-    init(index: Int){
+    init(index: Int, ViewController: UIViewController){
         self.index=index
+        self.ViewController = ViewController
         super.init(frame: CGRect())
         self.addTarget(self, action: #selector(toggle), for: .valueChanged)
         print("switch \(self.index) to \(status[self.index])")
@@ -34,26 +33,48 @@ class CustomSwitch: UISwitch{
     
 }
 
-class CustomTable :NSObject, UITableViewDataSource {
+class CustomTable :NSObject, UITableViewDataSource, UITableViewDelegate{
     var Hubs: [String]
+    var HubId: Int = -1
+    var ViewController: UIViewController
+    //var SegueToHubDetails : UIStoryboardSegue
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.Hubs.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath)
-
-        //cell.textLabel?.text = "row #\(indexPath.row + 1)"
         cell.textLabel?.text = Hubs[indexPath.row]
-        cell.accessoryView = CustomSwitch(index: indexPath.row)
+        cell.accessoryView = CustomSwitch(index: indexPath.row, ViewController: self.ViewController)
 
         return cell
     }
-    public init(inputData: [String]) {
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)番目の行が選択されました。")
+        self.HubId=indexPath.row
+        segue()
+    }
+    
+    public init(inputData: [String], ViewController: UIViewController, givensegue:UIStoryboardSegue, TableView: UITableView) {
+        print("public init")
         self.Hubs = inputData
+        self.ViewController = ViewController
+        //self.SegueToHubDetails = givensegue
+        
+        super.init()
+        TableView.dataSource = self
+        TableView.delegate = self
+    }
+    @objc func segue(){
+        self.ViewController.performSegue(withIdentifier: "SegueToSBalt", sender: self)
     }
 }
+    
 
+
+
+/*
 class TableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
@@ -105,7 +126,8 @@ public class HubsTableView: UITableViewController{
         }
     }
     
-}
+}*/
+
 //class CustomViewTable:UITableView{
 /*public class CustomViewTable: NSObject {
     

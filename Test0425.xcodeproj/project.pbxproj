@@ -18,6 +18,8 @@
 		4EBA80632453FF6800FC95C4 /* Test0425UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA80622453FF6800FC95C4 /* Test0425UITests.swift */; };
 		4EBA809D245402CB00FC95C4 /* ControlFunc_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBA809B2454025B00FC95C4 /* ControlFunc_Framework.framework */; };
 		4EBA809E245402CB00FC95C4 /* ControlFunc_Framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBA809B2454025B00FC95C4 /* ControlFunc_Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4ECA5266245D92CF00634786 /* Alt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ECA5265245D92CF00634786 /* Alt.storyboard */; };
+		4ECA5268245D938500634786 /* ViewController_Alt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA5267245D938500634786 /* ViewController_Alt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		4EBA80622453FF6800FC95C4 /* Test0425UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test0425UITests.swift; sourceTree = "<group>"; };
 		4EBA80642453FF6800FC95C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EBA80962454025B00FC95C4 /* ControlFunc_Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ControlFunc_Framework.xcodeproj; path = ../ControlFunc_Framework/ControlFunc_Framework.xcodeproj; sourceTree = "<group>"; };
+		4ECA5265245D92CF00634786 /* Alt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alt.storyboard; sourceTree = "<group>"; };
+		4ECA5267245D938500634786 /* ViewController_Alt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Alt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +117,11 @@
 				4EBA804B2453FF6400FC95C4 /* AppDelegate.swift */,
 				4EBA804D2453FF6400FC95C4 /* SceneDelegate.swift */,
 				4EBA804F2453FF6400FC95C4 /* ViewController.swift */,
-				4E4D756D2459C2D400DAA7BE /* TableViewCell.swift */,
 				4E4D756A245962C800DAA7BE /* ViewController_2.swift */,
+				4E4D756D2459C2D400DAA7BE /* TableViewCell.swift */,
 				4EBA80512453FF6400FC95C4 /* Main.storyboard */,
+				4ECA5265245D92CF00634786 /* Alt.storyboard */,
+				4ECA5267245D938500634786 /* ViewController_Alt.swift */,
 				4EBA80542453FF6800FC95C4 /* Assets.xcassets */,
 				4EBA80562453FF6800FC95C4 /* LaunchScreen.storyboard */,
 				4EBA80592453FF6800FC95C4 /* Info.plist */,
@@ -247,6 +253,7 @@
 			files = (
 				4EBA80582453FF6800FC95C4 /* LaunchScreen.storyboard in Resources */,
 				4EBA80552453FF6800FC95C4 /* Assets.xcassets in Resources */,
+				4ECA5266245D92CF00634786 /* Alt.storyboard in Resources */,
 				4EBA80532453FF6400FC95C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECA5268245D938500634786 /* ViewController_Alt.swift in Sources */,
 				4E4D756E2459C2D400DAA7BE /* TableViewCell.swift in Sources */,
 				4EBA80502453FF6400FC95C4 /* ViewController.swift in Sources */,
 				4E4D756B245962C800DAA7BE /* ViewController_2.swift in Sources */,

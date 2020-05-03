@@ -16,17 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cgW-LF-AqD">
-                                <rect key="frame" x="10" y="54" width="355" height="604"/>
+                                <rect key="frame" x="10" y="54" width="355" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZP-QG-lr2">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="151"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="301.5"/>
                                         <state key="normal" title="Segue"/>
                                         <connections>
                                             <segue destination="xfy-g0-RFf" kind="show" id="b0r-dL-h3h"/>
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rRl-fh-3HQ">
-                                        <rect key="frame" x="0.0" y="151" width="355" height="151"/>
+                                        <rect key="frame" x="0.0" y="301.5" width="355" height="301.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell0" id="tXK-kK-Jp5">
@@ -43,73 +43,6 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="Ydi-kV-ZD1"/>
                                         </connections>
                                     </tableView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="3ts-t1-YQn">
-                                        <rect key="frame" x="0.0" y="302" width="355" height="151"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hub0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jy-Uw-LIn">
-                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="151"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N34-ZS-2CF">
-                                                <rect key="frame" x="118.5" y="0.0" width="118" height="151"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2C-hc-s3a">
-                                                <rect key="frame" x="236.5" y="0.0" width="118.5" height="151"/>
-                                                <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pda-6t-lm4">
-                                                        <rect key="frame" x="35" y="60" width="51" height="31"/>
-                                                    </switch>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="Pda-6t-lm4" firstAttribute="centerX" secondItem="G2C-hc-s3a" secondAttribute="centerX" id="KlG-yd-CY0"/>
-                                                    <constraint firstItem="Pda-6t-lm4" firstAttribute="centerY" secondItem="G2C-hc-s3a" secondAttribute="centerY" id="TbI-uJ-GD3"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <viewLayoutGuide key="safeArea" id="aGP-2g-LAM"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="B8e-Mg-djU">
-                                        <rect key="frame" x="0.0" y="453" width="355" height="151"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hub1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLr-Ls-yJO">
-                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="151"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWR-gq-zFW">
-                                                <rect key="frame" x="118.5" y="0.0" width="118" height="151"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KH-ff-g4c">
-                                                <rect key="frame" x="236.5" y="0.0" width="118.5" height="151"/>
-                                                <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RL8-Xx-ouw">
-                                                        <rect key="frame" x="35" y="60" width="51" height="31"/>
-                                                        <connections>
-                                                            <action selector="Switch1_toggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="2vv-5m-Z7l"/>
-                                                        </connections>
-                                                    </switch>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="RL8-Xx-ouw" firstAttribute="centerX" secondItem="7KH-ff-g4c" secondAttribute="centerX" id="UBV-dm-rmF"/>
-                                                    <constraint firstItem="RL8-Xx-ouw" firstAttribute="centerY" secondItem="7KH-ff-g4c" secondAttribute="centerY" id="fBV-CH-lWX"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <viewLayoutGuide key="safeArea" id="pJ9-yo-xMF"/>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -124,9 +57,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="707-Nf-Ub2"/>
                     <connections>
-                        <outlet property="Switch0" destination="Pda-6t-lm4" id="h29-pA-Zd7"/>
-                        <outlet property="Switch1" destination="RL8-Xx-ouw" id="FfJ-rH-Ynq"/>
                         <outlet property="TableView" destination="rRl-fh-3HQ" id="fX9-rR-ZHv"/>
+                        <segue destination="LYp-Og-msq" kind="show" identifier="SegueToSBalt" id="HFT-04-12z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,6 +147,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="otS-6e-Yhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="138.98050974512745"/>
+        </scene>
+        <!--StoryboardID_Alt-->
+        <scene sceneID="Q1A-Wp-xGY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alt" referencedIdentifier="StoryboardID_Alt" id="LYp-Og-msq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AKv-F6-ILx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prJ-Od-dto" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="593"/>
         </scene>
     </scenes>
 </document>

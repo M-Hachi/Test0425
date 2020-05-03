@@ -13,7 +13,10 @@ class ViewController_2: UIViewController {
         // Do any additional setup after loading the view.
         self.ButtonA.addTarget(self, action: #selector(ButtonA_Down), for:  .touchDown)
         self.ButtonA.addTarget(self, action: #selector(ButtonA_Up), for:  .touchUpInside)
+        
+        
     }
+
     
 
     /*
@@ -28,11 +31,13 @@ class ViewController_2: UIViewController {
 
 }
 extension ViewController_2{
+    
     @objc func ButtonA_Down(){
         //blemanager.HubActions_Downstream(HubId: 0, ActionTypes: 0x01)
         blemanager.PortOutputCommand_StartPower(HubId: 0, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 100)
        
     }
+    
     @objc func ButtonA_Up(){
         //blemanager.HubActions_Downstream(HubId: 0, ActionTypes: 0x01)
         blemanager.PortOutputCommand_StartPower(HubId: 0, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 0)

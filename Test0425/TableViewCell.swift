@@ -52,8 +52,11 @@ class CustomTable :NSObject, UITableViewDataSource, UITableViewDelegate{
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)番目の行が選択されました。")
-        self.HubId=indexPath.row
-        segue()
+        if(blemanager.BLEStatus.IsConnected[indexPath.row]){
+            //if(blemanager.ConnectionStatus.IsConnected[indexPath.row]){
+            self.HubId=indexPath.row
+            segue()
+        }
     }
     
     public init(inputData: [String], ViewController: UIViewController, givensegue:UIStoryboardSegue, TableView: UITableView) {

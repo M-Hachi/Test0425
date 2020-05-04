@@ -9,7 +9,7 @@ import CoreBluetooth
 
 public var blemanager = BLEManager()
 var status=[Bool](repeating: false, count: 10)
-
+var LegoHub=[Hub](repeating: Hub(), count: 10)
 
 class ViewController: UIViewController{
     var handler: CustomTable!
@@ -46,9 +46,11 @@ extension ViewController{
         print("will prepare3")
         if segue.identifier == "SegueToSBalt" {
             print("ifprepare3")
-            guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
+            //guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
+            guard let vc = segue.destination as? TechnicHub_ViewController else { return }//
             //vc.segueText = "did segue!3"
             vc.HubId = handler.HubId
+            vc.HubName = "Hub \(handler.HubId)"
         }
     }
    

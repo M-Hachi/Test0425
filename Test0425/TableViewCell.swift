@@ -3,28 +3,35 @@
 
 import Foundation
 import UIKit
+import ControlFunc_Framework
 
 class CustomSwitch: UISwitch{
     var index:Int
     var ViewController: UIViewController
+    var blemanager: BLEManager
     @objc func toggle(_ sender: UISwitch) {
         if sender.isOn{
             print("on \(self.index)")
-            status[self.index]=true
+            //status[self.index]=true
+            //blemanager.BLEStatus.IsConnected[self.index]=true
             blemanager.Toggle_On(SwiftView: self.ViewController, SwiftSwitch: self, HubId: self.index)
         } else {
             print("off \(self.index)")
-            status[self.index]=false
+           
+            //status[self.index]=false
             blemanager.Toggle_Off(SwiftView: self.ViewController, SwiftSwitch: self, HubId: self.index)
         }
     }
-    init(index: Int, ViewController: UIViewController){
+    init(index: Int, ViewController: UIViewController, blemanager: BLEManager){
         self.index=index
         self.ViewController = ViewController
+        self.blemanager = blemanager
         super.init(frame: CGRect())
         self.addTarget(self, action: #selector(toggle), for: .valueChanged)
-        print("switch \(self.index) to \(status[self.index])")
-        self.setOn(status[self.index], animated: false)
+        print("switch \(self.index) to \(blemanager.BLEStatus.IsConnected[self.index])")
+        
+        //self.setOn(status[self.index], animated: false)
+        self.setOn(blemanager.BLEStatus.IsConnected[self.index], animated: false)
     }
     
     required init?(coder: NSCoder) {
@@ -37,6 +44,7 @@ class CustomTable :NSObject, UITableViewDataSource, UITableViewDelegate{
     var Hubs: [String]
     var HubId: Int = -1
     var ViewController: UIViewController
+    var blemanager: BLEManager
     //var SegueToHubDetails : UIStoryboardSegue
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.Hubs.count
@@ -45,7 +53,7 @@ class CustomTable :NSObject, UITableViewDataSource, UITableViewDelegate{
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell0", for: indexPath)
         cell.textLabel?.text = Hubs[indexPath.row]
-        cell.accessoryView = CustomSwitch(index: indexPath.row, ViewController: self.ViewController)
+        cell.accessoryView = CustomSwitch(index: indexPath.row, ViewController: self.ViewController, blemanager: self.blemanager)
 
         return cell
     }
@@ -55,14 +63,25 @@ class CustomTable :NSObject, UITableViewDataSource, UITableViewDelegate{
         if(blemanager.BLEStatus.IsConnected[indexPath.row]){
             //if(blemanager.ConnectionStatus.IsConnected[indexPath.row]){
             self.HubId=indexPath.row
-            segue()
+            switch blemanager.BLEHub[indexPath.row].manufacturerdata.SystemTypeAndDeviceNumber {
+            case 65:
+                self.ViewController.performSegue(withIdentifier: "Segue_TrainHub", sender: self)
+            case 128:
+                self.ViewController.performSegue(withIdentifier: "Segue_TechnicHub", sender: self)
+            default:
+                print("unknown hub type!")
+            }
+            //self.ViewController.performSegue(withIdentifier: "SegueToSBalt", sender: self)
+            //segue()
         }
     }
     
-    public init(inputData: [String], ViewController: UIViewController, givensegue:UIStoryboardSegue, TableView: UITableView) {
+    public init(inputData: [String], ViewController: UIViewController, TableView: UITableView, blemanager: BLEManager) {
+        //public init(inputData: [String], ViewController: UIViewController, givensegue:UIStoryboardSegue, TableView: UITableView, blemanager: BLEManager) {
         print("public init")
         self.Hubs = inputData
         self.ViewController = ViewController
+        self.blemanager = blemanager
         //self.SegueToHubDetails = givensegue
         
         super.init()

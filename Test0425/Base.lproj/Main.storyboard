@@ -58,7 +58,8 @@
                     <navigationItem key="navigationItem" id="707-Nf-Ub2"/>
                     <connections>
                         <outlet property="TableView" destination="rRl-fh-3HQ" id="fX9-rR-ZHv"/>
-                        <segue destination="LYp-Og-msq" kind="show" identifier="SegueToSBalt" id="HFT-04-12z"/>
+                        <segue destination="LYp-Og-msq" kind="show" identifier="Segue_TechnicHub" id="HFT-04-12z"/>
+                        <segue destination="A0M-gF-tTR" kind="show" identifier="Segue_TrainHub" id="eAu-Nc-eLw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -156,7 +157,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prJ-Od-dto" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="593"/>
+            <point key="canvasLocation" x="854" y="593"/>
+        </scene>
+        <!--TrainHub-->
+        <scene sceneID="Wmq-eg-pDV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alt" referencedIdentifier="TrainHub" id="A0M-gF-tTR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZSY-qk-9MG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpg-VM-TFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1070" y="593"/>
         </scene>
     </scenes>
 </document>

@@ -7,9 +7,8 @@ import UIKit
 import ControlFunc_Framework
 import CoreBluetooth
 
-public var blemanager = BLEManager()
-var status=[Bool](repeating: false, count: 10)
-var LegoHub=[Hub](repeating: Hub(), count: 10)
+public let NUMBEROFHUBS:Int = 10
+public var BLEMANAGER = BLEManager(NumberOfHubs: NUMBEROFHUBS)
 
 class ViewController: UIViewController{
     var handler: CustomTable!
@@ -23,35 +22,36 @@ class ViewController: UIViewController{
         print("view did load")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        BLEMANAGER = BLEManager.init(NumberOfHubs: NUMBEROFHUBS)//使用前に必ずinit()を呼ぶ
         
-        blemanager = BLEManager.init()
+        //let segue=UIStoryboardSegue(identifier:"SegueToSBalt", source: self, destination:ViewController_Alt())
         
-        let segue=UIStoryboardSegue(identifier:"SegueToSBalt", source: self, destination:ViewController_Alt())
+        handler = CustomTable(inputData: Hubs, ViewController: self, TableView: TableView, blemanager: BLEMANAGER)
         
-        handler = CustomTable(inputData: Hubs, ViewController: self, givensegue: segue, TableView: TableView)
-        
+        let Hub1 = BLEMANAGER.BLEHub[0]
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "SegueToSBalt" {
-    //            print("ifprepare2")
-    //            guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
-    //            vc.segueText = "did segue!"
-    //        }
-    //    }
 }
 extension ViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("will prepare3")
-        if segue.identifier == "SegueToSBalt" {
-            print("ifprepare3")
+        if segue.identifier == "Segue_TechnicHub" {
+            print("TechincHub")
             //guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
             guard let vc = segue.destination as? TechnicHub_ViewController else { return }//
             //vc.segueText = "did segue!3"
             vc.HubId = handler.HubId
             vc.HubName = "Hub \(handler.HubId)"
         }
+        else if segue.identifier == "Segue_TrainHub" {
+            print("TrainHub")
+            //guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
+            guard let vc = segue.destination as? TrainHub_ViewController else { return }//
+            //vc.segueText = "did segue!3"
+            vc.HubId = handler.HubId
+            vc.HubName = "Hub \(handler.HubId)"
+        }
     }
-   
+    
 }

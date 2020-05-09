@@ -2,10 +2,12 @@
 // Using Swift 5.0
 
 import UIKit
+import  ControlFunc_Framework
 
 class TrainHub_ViewController: UIViewController {
     
     var segueText: String?
+    var hub: Hub?
     var HubName: String?
     var HubId: Int = -1
     
@@ -25,8 +27,11 @@ class TrainHub_ViewController: UIViewController {
         
         HubName_Label.text = HubName
         
-        BLEMANAGER.self.HubProperties_Downstream(HubId: HubId, HubPropertyReference: 0x05, HubPropertyOperation: 0x05)
-        BLEMANAGER.self.HubProperties_Downstream(HubId: HubId, HubPropertyReference: 0x06, HubPropertyOperation: 0x05)
+        
+        //BLEMANAGER.self.HubProperties_Downstream(hub: HubId, HubPropertyReference: 0x05, HubPropertyOperation: 0x05)
+        //BLEMANAGER.self.HubProperties_Downstream(hub: HubId, HubPropertyReference: 0x06, HubPropertyOperation: 0x05)
+        BLEMANAGER.self.HubProperties_Downstream(hub: hub!, HubPropertyReference: 0x05, HubPropertyOperation: 0x05)
+        BLEMANAGER.self.HubProperties_Downstream(hub: hub!, HubPropertyReference: 0x06, HubPropertyOperation: 0x05)
         
     }
     

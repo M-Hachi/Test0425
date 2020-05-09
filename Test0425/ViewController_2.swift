@@ -38,7 +38,7 @@ class ViewController_2: UIViewController {
 extension ViewController_2{
     @objc func Button_1_Up(){
         print("color: \(self.color)")
-        BLEMANAGER.SetRgbColorNo(LED_color: self.color, HubId: 0, Port: 0x32, Mode: 0x00)
+        BLEMANAGER.SetRgbColorNo(LED_color: self.color, hub: Fire, Port: 0x32, Mode: 0x00)
         color+=1
         if(color>10){
             color=0
@@ -48,12 +48,14 @@ extension ViewController_2{
     
     @objc func ButtonA_Down(){
         //blemanager.HubActions_Downstream(HubId: 0, ActionTypes: 0x01)
-        BLEMANAGER.PortOutputCommand_StartPower(HubId: 0, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 100)
+        //BLEMANAGER.PortOutputCommand_StartPower(HubId: 0, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 100)
+        BLEMANAGER.PortOutputCommand_StartPower(hub: Fire, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 100)
        
     }
     
     @objc func ButtonA_Up(){
         //blemanager.HubActions_Downstream(HubId: 0, ActionTypes: 0x01)
-        BLEMANAGER.PortOutputCommand_StartPower(HubId: 0, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 0)
+        //BLEMANAGER.PortOutputCommand_StartPower(HubId: 0, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 0)
+        BLEMANAGER.PortOutputCommand_StartPower(hub: Fire, PortId: 0, StartupInformation: 0x00, CompletetionInformation: 0x00, Power: 0)
     }
 }

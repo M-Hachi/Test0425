@@ -2,10 +2,12 @@
 // Using Swift 5.0
 
 import UIKit
+import ControlFunc_Framework
 
 class TechnicHub_ViewController: UIViewController {
 
     var segueText: String?
+    var hub: Hub?
     var HubName: String?
     var HubId: Int = -1
     
@@ -24,11 +26,11 @@ class TechnicHub_ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ViewTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.UpdateView), userInfo: nil, repeats: true)
-               
-        HubName_Label.text = HubName
+
+        HubName_Label.text = hub?.Name
         
-        BLEMANAGER.self.HubProperties_Downstream(HubId: HubId, HubPropertyReference: 0x05, HubPropertyOperation: 0x05)
-        BLEMANAGER.self.HubProperties_Downstream(HubId: HubId, HubPropertyReference: 0x06, HubPropertyOperation: 0x05)
+        BLEMANAGER.self.HubProperties_Downstream(hub: hub!, HubPropertyReference: 0x05, HubPropertyOperation: 0x05)
+        BLEMANAGER.self.HubProperties_Downstream(hub: hub!, HubPropertyReference: 0x06, HubPropertyOperation: 0x05)
     }
     @objc func UpdateView(){
         
@@ -39,6 +41,7 @@ class TechnicHub_ViewController: UIViewController {
         self.HW_C_Label.text = BLEMANAGER.BLEHub[HubId].attatchedHw.PortC.Name()
         self.HW_D_Label.text = BLEMANAGER.BLEHub[HubId].attatchedHw.PortD.Name()
         
+        print("\(Fire.HubPort[0].Name)")
     }
     /*
     // MARK: - Navigation
@@ -49,5 +52,9 @@ class TechnicHub_ViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ViewTimer.invalidate()
+    }
 
 }

@@ -17,7 +17,7 @@ class ViewController_2: UIViewController {
 
         self.ButtonA.addTarget(self, action: #selector(ButtonA_Down), for:  .touchDown)
         self.ButtonA.addTarget(self, action: #selector(ButtonA_Up), for:  .touchUpInside)
-        print("2: \(BLEMANAGER.BLEHub[0].attatchedHw.PortA)")
+        //print("2: \(BLEMANAGER.BLEHub[0].attatchedHw.PortA)")
         
     }
 

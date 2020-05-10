@@ -29,7 +29,6 @@ public let Hubs = [Fire, Water, Air, Stone, Earth, Ice, Jan, Feb, Mar, Apr, May]
 public var BLEMANAGER = BLEManager(hubs: Hubs)
 class ViewController: UIViewController{
     var handler: CustomTable!
-    
     @IBOutlet weak var TableView: UITableView!
     
     override func viewDidLoad() {
@@ -37,36 +36,38 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         BLEMANAGER = BLEManager.init(hubs: Hubs)//使用前に必ずinit()を呼ぶ
-        //BLEMANAGER.appendhub(hub: Hub0)
-        //let segue=UIStoryboardSegue(identifier:"SegueToSBalt", source: self, destination:ViewController_Alt())
         
         handler = CustomTable(hubs:Hubs, ViewController: self, TableView: TableView, blemanager: BLEMANAGER)
-        
-        
+        BLEMANAGER.delegate = self
     }
-    
 }
+
 extension ViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("will prepare3")
         if segue.identifier == "Segue_TechnicHub" {
             print("TechincHub")
-            //guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
-            guard let vc = segue.destination as? TechnicHub_ViewController else { return }//
-            //vc.segueText = "did segue!3"
+            // as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
+            guard let vc = segue.destination as? TechnicHub_ViewController else { return }
             vc.hub = Hubs[handler.HubId]
             vc.HubId = handler.HubId
             vc.HubName = "Hub \(handler.HubId)"
         }
         else if segue.identifier == "Segue_TrainHub" {
             print("TrainHub")
-            //guard let vc = segue.destination as? ViewController_Alt else { return }// as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
-            guard let vc = segue.destination as? TrainHub_ViewController else { return }//
-            //vc.segueText = "did segue!3"
+            // as? (class名) StoryboardでviewcontrollerのStoryboardIDを指定する
+            guard let vc = segue.destination as? TrainHub_ViewController else { return }
             vc.hub = Hubs[handler.HubId]
             vc.HubId = handler.HubId
             vc.HubName = "Hub \(handler.HubId)"
         }
     }
-    
+}
+
+extension ViewController: BLEManagerDelegate{
+    func didConnecttoHub(_ hub: Hub) {
+        print("didConnecttoHub view")
+        //synthesizer.speak(utterance_DidConnect)
+               
+    }
 }

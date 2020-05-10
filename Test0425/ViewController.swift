@@ -27,6 +27,7 @@ public let May = Hub(Name: "May")
 public let Hubs = [Fire, Water, Air, Stone, Earth, Ice, Jan, Feb, Mar, Apr, May]
 
 public var BLEMANAGER = BLEManager(hubs: Hubs)
+
 class ViewController: UIViewController{
     var handler: CustomTable!
     @IBOutlet weak var TableView: UITableView!
@@ -65,9 +66,27 @@ extension ViewController{
 }
 
 extension ViewController: BLEManagerDelegate{
+    func didDetatchPort(_ hub: Hub, _ port: HubPort) {
+        print("didDetatchPort view")
+    }
+    func didAttatchPort(_ hub: Hub) {
+         print("didAttatchport view")
+    }
+    
+    func didAttatchVirtualPort(_ hub: Hub) {
+         print("didAttatchVirtulport")
+    }
+    
     func didConnecttoHub(_ hub: Hub) {
         print("didConnecttoHub view")
+        BLEMANAGER.SetRgbColorNo(LED_color: hub.id+1, hub: hub, Port: 0x32, Mode: 0x00)
         //synthesizer.speak(utterance_DidConnect)
-               
+        
+        switch hub {
+        case Fire:
+            print("hub 0")
+        default:
+            print("hub 1")
+        }
     }
 }

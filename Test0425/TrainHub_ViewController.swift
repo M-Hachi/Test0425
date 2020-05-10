@@ -38,8 +38,8 @@ class TrainHub_ViewController: UIViewController {
     @objc func UpdateView(){
         self.RSSI_val_Label.text = String("\(BLEMANAGER.BLEHub[HubId].RSSI) [dB]")
         self.Battery_val_Label.text = String("\(BLEMANAGER.BLEHub[HubId].BatteryVoltage) [%]")
-        self.HW_A_Label.text = hub?.HubPort[0].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortA.Name()
-        self.HW_B_Label.text = hub?.HubPort[1].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortB.Name()
+        self.HW_A_Label.text = hub?.Port[0].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortA.Name()
+        self.HW_B_Label.text = hub?.Port[1].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortB.Name()
     }
 
     /*

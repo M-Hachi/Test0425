@@ -38,12 +38,12 @@ class TechnicHub_ViewController: UIViewController {
         
         self.Battery_val_Label.text = String("\(BLEMANAGER.BLEHub[HubId].BatteryVoltage) [%]")
         
-        self.HW_A_Label.text = hub?.HubPort[0].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortA.Name()
-        self.HW_B_Label.text = hub?.HubPort[1].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortB.Name()
-        self.HW_C_Label.text = hub?.HubPort[2].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortC.Name()
-        self.HW_D_Label.text = hub?.HubPort[3].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortD.Name()
+        self.HW_A_Label.text = hub?.Port[0].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortA.Name()
+        self.HW_B_Label.text = hub?.Port[1].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortB.Name()
+        self.HW_C_Label.text = hub?.Port[2].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortC.Name()
+        self.HW_D_Label.text = hub?.Port[3].Hardware.Name() //BLEMANAGER.BLEHub[HubId].attatchedHw.PortD.Name()
         
-        print("\(Fire.HubPort[0].Name)")
+        print("\(Fire.Port[0].Name)")
     }
     /*
     // MARK: - Navigation
